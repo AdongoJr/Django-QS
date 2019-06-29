@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html> 
 <head> 
+    <title>QS</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'css/mystyles.css' %}" rel="stylesheet">
@@ -11,14 +12,25 @@
     <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
 </head> 
 <body> 
+    <div>
     <nav>
         <div class="nav-wrapper teal">
-            <ul id="nav-mobile" class="left hide-on-med-and-down"> 
-                <li><a href="{% url 'home' %}">Home</a></li>
+            <a href="{% url 'home' %}" class="brand-logo one">Take Off</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down"> 
                 <li><a href="{% url 'help' %}">Help</a></li>
             </ul>
         </div>
     </nav>
+    <div class="one">
+    {% if user.is_authenticated %} 
+        <p>Hi {{ user.username }}!</p> 
+        <p><a href="{% url 'logout' %}">Log out</a></p>
+    {% else %} 
+        <p>You are not logged in.</p> 
+        <p><a href="{% url 'login' %}">Log in</a> or <a href="{% url 'signup' %}">Register</a></p>
+    {% endif %}
+    </div>
+    </div>
 
     <div>
         {% block content %} 

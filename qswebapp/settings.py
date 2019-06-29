@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'takeoff.apps.TakeoffConfig',
+    'accounts.apps.AccountsConfig', # dedicated for registering users
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,4 +121,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+LOGIN_REDIRECT_URL = 'about'
+LOGOUT_REDIRECT_URL = 'home'
 
