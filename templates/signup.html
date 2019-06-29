@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %} Sign Up {% endblock title %}
 {% block content %}
         <div class="container">
             <h2>Register</h2> 
@@ -8,6 +8,6 @@
                 {{ form.as_p }} 
                 <button class="btn btn-outline-info" type="submit">Register</button> 
             </form>
-            <p>If you have an account <a href="/accounts/login" target="blank"><strong>Login</strong></a> instead.</p>
+            <p>If you have an account <a href="/accounts/login"><strong>Login</strong></a> instead.</p>
         </div>    
 {% endblock content %}

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 
 class HomePageView(TemplateView):
@@ -6,5 +7,5 @@ class HomePageView(TemplateView):
 class HelpPageView(TemplateView):
     template_name = 'help.html'
 
-class AboutPageView(TemplateView):
-    template_name = 'about.html'
+class MainPageView(LoginRequiredMixin, TemplateView):
+    template_name = 'main.html'
