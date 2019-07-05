@@ -2,11 +2,38 @@
 {% block title %} Sign Up {% endblock title %}
 {% block content %}
         <div class="container">
-            <h2>Register</h2> 
+            <h2>Register</h2> <br>
             <form method="post"> 
-                {% csrf_token %} 
-                {{ form.as_p }} 
-                <button class="btn btn-outline-info" type="submit">Register</button> 
+                {% csrf_token %}
+                
+                {% for field in form %} 
+                    {% for error in field.errors %}
+                        <p style="color: red"> {{ error }} </p>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_box</i>
+                    {{ form.username }}
+                    {{ form.username.label_tag }}
+                    <p> {{ form.username.help_text }} </p>
+                </div>
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">lock</i>
+                    {{ form.password1 }}
+                    {{ form.password1.label_tag }}
+                    <p> {{ form.password1.help_text }} </p>
+                </div>
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">lock</i>
+                    {{ form.password2 }}
+                    {{ form.password2.label_tag }}
+                    <p> {{ form.password2.help_text }} </p>
+                </div>
+                
+                <button class="btn btn-outline-info" type="submit">Register</button>
             </form>
             <p>If you have an account <a href="/accounts/login"><strong>Login</strong></a> instead.</p>
         </div>    

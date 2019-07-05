@@ -2,10 +2,30 @@
 {% block title %} Log In {% endblock title %}
 {% block content %}
         <div class="container">
-            <h2>Log In</h2> 
+            <h2>Log In</h2> <br>
             <form method="post"> 
                 {% csrf_token %} 
-                {{ form.as_p }} 
+
+                <!--{{form.as_p}}-->
+                
+                {% for field in form %} 
+                    {% for error in field.errors %}
+                        <p style="color: red"> {{ error }} </p>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    {{ form.username }}
+                    {{ form.username.label_tag }}
+                </div>
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">lock</i>
+                    {{ form.password }}
+                    {{ form.password.label_tag }}
+                </div>
+
                 <button class="btn btn-outline-info" type="submit">Log In</button> 
             </form>
             <p>If you don't have an account <a href="/accounts/signup"><strong>Register</strong></a> instead.</p>
