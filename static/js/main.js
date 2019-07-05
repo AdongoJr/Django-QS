@@ -6,34 +6,30 @@ function addInput(divName) {
         alert('You have reached the limit: ' + counter + ' inputs.');
     } else {
         var newdiv = document.createElement('div');
-        newdiv.innerHTML = '<div class="input-field col s12">' + 
-            '<i class="material-icons prefix">create</i>' +
+        newdiv.className = "input-field col s12";
+        newdiv.innerHTML = '<i class="material-icons prefix">create</i>' +
             '<label' + ' for="' + (counter + 1) + '"' + '>Door ' + (counter + 1) + '</label>' + 
-            '<input' + ' id="' + (counter + 1) + '"' + ' type="number" name="doors" value="">' + 
-            '</div>';
+            '<input' + ' id="' + (counter + 1) + '"' + ' type="number" ' + ' name="' + 'door' + (counter + 1) + '"' + ' value="">';
         document.getElementById(divName).appendChild(newdiv);
         counter ++;
     }
 };
 
 
-
 $(document).ready(function(){ 
-    $('#calculate').click(function(){
+    $('#updateAll').click(function(){
         let length = $('#length').val();
         let width = $('#width').val();
         let wallThickness = $('#wallThickness').val();
         let cL = (2*length) + (2*width) - (4*2*0.5*wallThickness);
         $('#centreLine').text(cL);
-    });
-    
-    $('#calculateArea').click(function(){
-        let cl = $('#cl').val();
+
         let wallH = $('#wallH').val();
-        d = cl*wallH*1e-6;
+        d = cL*wallH*1e-6;
         let area = Math.round(d*100)/100;
         $('#wallConstr').text(area);
     });
+    
 
     $('#done').click(function(){
         let names = $('#myForm').serializeArray();
@@ -50,6 +46,18 @@ $(document).ready(function(){
 
         $('#addResult').text(sum).css('color', 'red');
     });
+
+    
+    $('#remove').click(function(){
+        if (counter==1) {
+            alert('Cannot remove first input field!')
+        } else {
+            let list = document.getElementById('dynamicInput');
+            list.removeChild(list.lastElementChild);
+            counter--;
+        }
+    });
+
 });
 
 

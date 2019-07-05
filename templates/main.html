@@ -3,8 +3,9 @@
 {% block content %}
         <h4 class="one">This is the Main Page</h4> <br>
 
+        <!--Centre Line-->
         <div class="one" style="width: 400px; float: left;">
-            <form class="card">
+            <form class="card" id="cnt">
             <div class="row">
             <span class="card-title">Centre Line Calculation</span>
             <div class="input-field col s12">
@@ -24,48 +25,58 @@
             </div>
             </div>
             
-
-            <input type="button" value="Calculate" id="calculate" class="btn waves-effect waves-light">
             <h4 class="one" id="centreLine"></h4>
             </form>
+
+            <button  value="Update All" id="updateAll" class="btn waves-effect waves-light"> Update All
+                <i class="material-icons left">replay</i>
+            </button>
         </div>
 
-
+        <!--Wall Construction-->
         <div class="one" style="width: 400px; float: left;">
             <form class="card">
             <div class="row">
-            <span class="card-title">Wall Construction</span>
-            <div class="input-field col s12">
-                <i class="material-icons prefix">create</i>
-                <input id="cl" type="number" name="cl" value="6200" required>
-                <label for="cl">Centre Line</label>
-            </div>
-            <div class="input-field col s12">
-                <i class="material-icons prefix">create</i>
-                <input id="wallH" type="number" name="wallH" value="3000" required>
-                <label for="wallH">Wall Height</label>
-            </div>
+                <span class="card-title">Wall Construction</span>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">create</i>
+                        <input id="wallH" type="number" name="wallH" value="3000" required>
+                        <label for="wallH">Wall Height</label>
+                    </div>
+                <span class="card-title">Openings</span>
+                <p class="one">Doors</p>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">create</i>
+                        <input id="doorArea" type="number" name="doorArea" value="" required>
+                        <label for="doorArea">Total Door Area</label>
+                    </div>
+                <p class="one">Windows</p>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">create</i>
+                        <input id="winArea" type="number" name="winArea" value="" required>
+                        <label for="winArea">Total Window Area</label>
+                    </div>
+
             </div>
             
-
-            <input type="button" value="Calculate Area" id="calculateArea" class="btn waves-effect waves-light">
             <h4 class="one"id="wallConstr"></h4>
             </form>
         </div>
 
-        
+        <!--Doors-->
         <div class="one" style="width: 400px; float: left;">
             <form class="card" id="myForm">
                 <div class="row">
-                <span class="card-title">Doors</span> <br>
-                <input type="button" value="Add" id="add" onclick="addInput('dynamicInput');" class="btn waves-effect waves-light"> <br>
-                <div id="dynamicInput">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">create</i>
-                        <label for="1">Door 1</label> 
-                        <input type="number" name="doors" id="1" value=""> 
-                    </div>
-                </div> <br>
+                    <span class="card-title">Doors</span> <br>
+                    <p id="add" onclick="addInput('dynamicInput');" class="btn-floating waves-effect waves-light"> <i class="material-icons">add</i> </p>
+                    <p id="remove" class="btn-floating waves-effect waves-light"> <i class="material-icons">remove</i> </p> <br>
+                    <div id="dynamicInput">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">create</i>
+                            <label for="1">Door 1</label> 
+                            <input  id="1" type="number" name="door1" value=""> 
+                        </div>
+                    </div> <br>
                 </div>
             
                 <input type="button" value="Done" id="done" class="btn waves-effect waves-light">
