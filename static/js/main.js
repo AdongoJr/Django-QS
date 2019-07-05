@@ -6,7 +6,7 @@ function addInput(divName) {
         alert('You have reached the limit: ' + counter + ' inputs.');
     } else {
         var newdiv = document.createElement('div');
-        newdiv.innerHTML = '<label>Door ' + (counter + 1) + '<label/>' + '<input type="number" name="doors" value="">';
+        newdiv.innerHTML = '<div class="input-field col s12">' + '<label>Door ' + (counter + 1) + '</label>' + '<input type="number" name="doors" value="">' + '</div>';
         document.getElementById(divName).appendChild(newdiv);
         counter ++;
     }

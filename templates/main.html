@@ -8,14 +8,17 @@
             <div class="row">
             <span class="card-title">Centre Line Calculation</span>
             <div class="input-field col s12">
+                <i class="material-icons prefix">create</i>
                 <input id="length" type="number" name="length" value="2000" required>
                 <label for="length">Length</label>
             </div>
             <div class="input-field col s12">
+                <i class="material-icons prefix">create</i>
                 <input id="width" type="number" name="width" value="1500" required>
                 <label for="width">Width</label>
             </div>
             <div class="input-field col s12">
+                <i class="material-icons prefix">create</i>
                 <input id="wallThickness" type="number" name="wallThickness" value="200" required>
                 <label for="wallThickness">Wall Thickness</label>
             </div>
@@ -23,7 +26,7 @@
             
 
             <input type="button" value="Calculate" id="calculate" class="btn waves-effect waves-light">
-            <h4 id="centreLine"></h4>
+            <h4 class="one" id="centreLine"></h4>
             </form>
         </div>
 
@@ -33,10 +36,12 @@
             <div class="row">
             <span class="card-title">Wall Construction</span>
             <div class="input-field col s12">
+                <i class="material-icons prefix">create</i>
                 <input id="cl" type="number" name="cl" value="6200" required>
                 <label for="cl">Centre Line</label>
             </div>
             <div class="input-field col s12">
+                <i class="material-icons prefix">create</i>
                 <input id="wallH" type="number" name="wallH" value="3000" required>
                 <label for="wallH">Wall Height</label>
             </div>
@@ -44,7 +49,7 @@
             
 
             <input type="button" value="Calculate Area" id="calculateArea" class="btn waves-effect waves-light">
-            <h4 id="wallConstr"></h4>
+            <h4 class="one"id="wallConstr"></h4>
             </form>
         </div>
 
@@ -55,7 +60,10 @@
                 <span class="card-title">Doors</span> <br>
                 <input type="button" value="Add" id="add" onclick="addInput('dynamicInput');" class="btn waves-effect waves-light"> <br>
                 <div id="dynamicInput">
-                    <label>Door 1</label> <input type="number" name="doors" value=""> 
+                    <div class="input-field col s12">
+                        <label for="d">Door 1</label> 
+                        <input type="number" name="doors" id="d" value=""> 
+                    </div>
                 </div> <br>
                 </div>
             
