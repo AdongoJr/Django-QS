@@ -6,13 +6,9 @@
             <form method="post"> 
                 {% csrf_token %} 
 
-                <!--{{form.as_p}}-->
-                
-                {% for field in form %} 
-                    {% for error in field.errors %}
+                    {% for error in form.non_field_errors %}
                         <p style="color: red"> {{ error }} </p>
                     {% endfor %}
-                {% endfor %}
 
                 <div class="input-field col s12">
                     <i class="material-icons prefix">account_circle</i>

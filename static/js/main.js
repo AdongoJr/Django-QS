@@ -1,17 +1,19 @@
 
-let counter = 1; // initial text box counter
-let limit = 10; // limit
-function addInput(divName) {
-    if (counter == limit) {
-        alert('You have reached the limit: ' + counter + ' inputs.');
+let dCounter = 1;
+let dLimit = 5;
+function addDoorInput(divName) {
+    if (dCounter == dLimit) {
+        alert('You have reached the limit: ' + dCounter + ' inputs.');
     } else {
-        var newdiv = document.createElement('div');
-        newdiv.className = "input-field col s12";
-        newdiv.innerHTML = '<i class="material-icons prefix">create</i>' +
-            '<label' + ' for="' + (counter + 1) + '"' + '>Door ' + (counter + 1) + '</label>' + 
-            '<input' + ' id="' + (counter + 1) + '"' + ' type="number" ' + ' name="' + 'door' + (counter + 1) + '"' + ' value="">';
+        let newdiv = document.createElement('div');
+        newdiv.className = 'one';
+        newdiv.innerHTML = '<p>Door ' + (dCounter + 1) + '</p>' +
+            '<label for="length' + (dCounter + 1) + '">Length</label> ' +
+            '<input type="number" name="length' + (dCounter + 1) + '" id="length' + (dCounter + 1) + '">' + '<br>' +
+            '<label for="height' + (dCounter + 1) + '">Height</label> ' +
+            '<input type="number" name="height' + (dCounter + 1) + '" id="height' + (dCounter + 1) + '">' ;
         document.getElementById(divName).appendChild(newdiv);
-        counter ++;
+        dCounter ++;
     }
 };
 
@@ -25,36 +27,40 @@ $(document).ready(function(){
         $('#centreLine').text(cL);
 
         let wallH = $('#wallH').val();
-        d = cL*wallH*1e-6;
-        let area = Math.round(d*100)/100;
-        $('#wallConstr').text(area);
-    });
-    
+        grossArea = cL*wallH;
 
-    $('#done').click(function(){
-        let names = $('#myForm').serializeArray();
+        let data = $('#doorForm').serializeArray();
         let arrays = [];
-        for (let i = 0; i < names.length; i++){
-            let arr = Number(names[i].value);
+        for(let i=0; i<data.length; i++){
+            if(i%2===1) continue; 
+            let arr = Number(data[i].value); 
             arrays.push(arr);
         };
-
-        sum = 0;
-        for (let i = 0; i < arrays.length; i++) {
-            sum += arrays[i];
+        let arrays2 = []
+        for(let i=0; i<data.length; i++){
+            if(i%2===0) continue; 
+            let arr = Number(data[i].value); 
+            arrays2.push(arr);
         };
+        let sum = 0;
+        for (let i=0; i<arrays.length; i++){ 
+            sum += (arrays[i]*arrays2[i]);
+        };
+        let totalDoorArea = sum
+        let wallConstrArea = Math.round(((grossArea - totalDoorArea)*1e-6)*100)/100;
 
-        $('#addResult').text(sum).css('color', 'red');
+        $('#wallConstr').text(wallConstrArea);
+        $('#doorArea').text(totalDoorArea*1e-6).css('color', 'blue');
     });
-
     
-    $('#remove').click(function(){
-        if (counter==1) {
+
+    $('#dRemove').click(function(){
+        if (dCounter==1) {
             alert('Cannot remove first input field!')
         } else {
-            let list = document.getElementById('dynamicInput');
+            let list = document.getElementById('dynamicInput_1');
             list.removeChild(list.lastElementChild);
-            counter--;
+            dCounter--;
         }
     });
 
