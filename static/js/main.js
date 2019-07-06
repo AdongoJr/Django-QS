@@ -8,10 +8,14 @@ function addDoorInput(divName) {
         let newdiv = document.createElement('div');
         newdiv.className = 'one';
         newdiv.innerHTML = '<p>Door ' + (dCounter + 1) + '</p>' +
+            '<div class="input-field col s12">' +
             '<label for="length' + (dCounter + 1) + '">Length</label> ' +
             '<input type="number" name="length' + (dCounter + 1) + '" id="length' + (dCounter + 1) + '">' + '<br>' +
+            '</div>' +
+            '<div class="input-field col s12">' +
             '<label for="height' + (dCounter + 1) + '">Height</label> ' +
-            '<input type="number" name="height' + (dCounter + 1) + '" id="height' + (dCounter + 1) + '">' ;
+            '<input type="number" name="height' + (dCounter + 1) + '" id="height' + (dCounter + 1) + '">' +
+            '</div>';
         document.getElementById(divName).appendChild(newdiv);
         dCounter ++;
     }
@@ -24,7 +28,7 @@ $(document).ready(function(){
         let width = $('#width').val();
         let wallThickness = $('#wallThickness').val();
         let cL = (2*length) + (2*width) - (4*2*0.5*wallThickness);
-        $('#centreLine').text(cL);
+        $('#centreLine').text(`Centre Line: ${cL}`);
 
         let wallH = $('#wallH').val();
         grossArea = cL*wallH;
@@ -49,8 +53,7 @@ $(document).ready(function(){
         let totalDoorArea = sum
         let wallConstrArea = Math.round(((grossArea - totalDoorArea)*1e-6)*100)/100;
 
-        $('#wallConstr').text(wallConstrArea);
-        $('#doorArea').text(totalDoorArea*1e-6).css('color', 'blue');
+        $('#wallConstr').text(`Area: ${wallConstrArea}`);
     });
     
 
