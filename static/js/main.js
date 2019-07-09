@@ -9,8 +9,8 @@ function addDoorInput(divName) {
         newdiv.className = 'one';
         newdiv.innerHTML = '<p>Door ' + (dCounter + 1) + '</p>' +
             '<div class="input-field col s12">' +
-            '<label for="length' + (dCounter + 1) + '">Length</label> ' +
-            '<input type="number" name="length' + (dCounter + 1) + '" id="length' + (dCounter + 1) + '">' + '<br>' +
+            '<label for="width' + (dCounter + 1) + '">Width</label> ' +
+            '<input type="number" name="width' + (dCounter + 1) + '" id="width' + (dCounter + 1) + '">' + '<br>' +
             '</div>' +
             '<div class="input-field col s12">' +
             '<label for="height' + (dCounter + 1) + '">Height</label> ' +
@@ -21,6 +21,27 @@ function addDoorInput(divName) {
     }
 };
 
+let wCounter = 1;
+let wLimit = 5;
+function addWinInput(divName) {
+    if (wCounter == wLimit) {
+        alert('You have reached the limit: ' + wCounter + ' inputs.');
+    } else {
+        let newdiv = document.createElement('div');
+        newdiv.className = 'one';
+        newdiv.innerHTML = '<p>Window ' + (wCounter + 1) + '</p>' +
+            '<div class="input-field col s12">' +
+            '<label for="width' + (wCounter + 1) + '">Width</label> ' +
+            '<input type="number" name="width' + (wCounter + 1) + '" id="width' + (wCounter + 1) + '">' + '<br>' +
+            '</div>' +
+            '<div class="input-field col s12">' +
+            '<label for="height' + (wCounter + 1) + '">Height</label> ' +
+            '<input type="number" name="height' + (wCounter + 1) + '" id="height' + (wCounter + 1) + '">' +
+            '</div>';
+        document.getElementById(divName).appendChild(newdiv);
+        wCounter ++;
+    }
+};
 
 $(document).ready(function(){ 
     $('#updateAll').click(function(){
@@ -33,25 +54,43 @@ $(document).ready(function(){
         let wallH = $('#wallH').val();
         grossArea = cL*wallH;
 
-        let data = $('#doorForm').serializeArray();
-        let arrays = [];
-        for(let i=0; i<data.length; i++){
+        let doorData = $('#doorForm').serializeArray();
+        let dWidths = [];
+        for(let i=0; i<doorData.length; i++){
             if(i%2===1) continue; 
-            let arr = Number(data[i].value); 
-            arrays.push(arr);
+            let arr = Number(doorData[i].value); 
+            dWidths.push(arr);
         };
-        let arrays2 = []
-        for(let i=0; i<data.length; i++){
+        let dHeights = []
+        for(let i=0; i<doorData.length; i++){
             if(i%2===0) continue; 
-            let arr = Number(data[i].value); 
-            arrays2.push(arr);
+            let arr = Number(doorData[i].value); 
+            dHeights.push(arr);
         };
-        let sum = 0;
-        for (let i=0; i<arrays.length; i++){ 
-            sum += (arrays[i]*arrays2[i]);
+        let totalDoorArea = 0;
+        for (let i=0; i<dWidths.length; i++){ 
+            totalDoorArea += (dWidths[i]*dHeights[i]);
         };
-        let totalDoorArea = sum
-        let wallConstrArea = Math.round(((grossArea - totalDoorArea)*1e-6)*100)/100;
+
+        let winData = $('#winForm').serializeArray();
+        let wWidths = [];
+        for(let i=0; i<winData.length; i++){
+            if(i%2===1) continue; 
+            let arr = Number(winData[i].value); 
+            wWidths.push(arr);
+        };
+        let wHeights = []
+        for(let i=0; i<winData.length; i++){
+            if(i%2===0) continue; 
+            let arr = Number(winData[i].value); 
+            wHeights.push(arr);
+        };
+        let totalWinArea = 0;
+        for (let i=0; i<wWidths.length; i++){ 
+            totalWinArea += (wWidths[i]*wHeights[i]);
+        };
+        
+        let wallConstrArea = Math.round(((grossArea - totalDoorArea - totalWinArea)*1e-6)*100)/100;
 
         $('#wallConstr').text(`Area: ${wallConstrArea}`);
     });
@@ -64,6 +103,16 @@ $(document).ready(function(){
             let list = document.getElementById('dynamicInput_1');
             list.removeChild(list.lastElementChild);
             dCounter--;
+        }
+    });
+
+    $('#wRemove').click(function(){
+        if (wCounter==1) {
+            alert('Cannot remove first input field!')
+        } else {
+            let list = document.getElementById('dynamicInput_2');
+            list.removeChild(list.lastElementChild);
+            wCounter--;
         }
     });
 

@@ -7,7 +7,8 @@
         </button> <br>
 
         <!--Centre Line-->
-        <div class="one" style="width: 400px; float: left;">
+    
+        <div class="one" style="width: 750px">
             <form class="card" id="cnt">
                 <div class="row">
                     <span class="card-title">Centre Line Calculation</span>
@@ -32,30 +33,8 @@
             </form>
         </div>
 
-        <!--Wall Construction-->
-        <div class="one" style="width: 400px; float: left;">
-
-            <!--Doors-->
-            <form class="card" id="doorForm">
-                
-                <span class="card-title">Doors</span> <br>
-                <p id="addAnother" class="btn-floating waves-effect waves-light one" onclick="addDoorInput('dynamicInput_1');" > <i class="material-icons">add</i> </p>
-                <p id="dRemove" class="btn-floating waves-effect waves-light"> <i class="material-icons">remove</i> </p> <br>
-                <div id="dynamicInput_1">
-                    <div class="one">
-                        <p>Door 1</p>
-                        <div class="input-field col s12">
-                            <label for="length1">Length</label>
-                            <input type="number" name="length1" id="length1" value=""> <br>
-                        </div>
-                        <div class="input-field col s12">
-                            <label for="height1">Height</label>
-                            <input type="number" name="height1" id="height1" value="">
-                        </div>
-                    </div>
-                </div> <br>
-            </form> <br> 
-            
+        <div class="one" style="width: 750px">
+            <!--External wall construction-->
             <form class="card">
                 <div class="row">
                     <span class="card-title">External Wall Construction</span>
@@ -68,7 +47,55 @@
             
                 <h4 class="one"id="wallConstr"></h4>
             </form>
-
         </div>
+
+        <div class="one" style="width: 750px">
+
+            <!--Doors-->
+            <form class="card" id="doorForm">
+                
+                <span class="card-title">Doors</span> <br>
+                <p id="addAnother" class="btn-floating waves-effect waves-light one" onclick="addDoorInput('dynamicInput_1');" > <i class="material-icons">add</i> </p>
+                <p id="dRemove" class="btn-floating waves-effect waves-light"> <i class="material-icons">remove</i> </p> <br>
+                <div id="dynamicInput_1">
+                    <div class="one">
+                        <p>Door 1</p>
+                        <div class="input-field col s12">
+                            <label for="length1">Width</label>
+                            <input type="number" name="length1" id="length1" value=""> <br>
+                        </div>
+                        <div class="input-field col s12">
+                            <label for="height1">Height</label>
+                            <input type="number" name="height1" id="height1" value="">
+                        </div>
+                    </div>
+                </div> <br> <br> 
+            </form> <br> 
+        </div>
+
+        <div class="one" style="width: 750px">
+
+            <!--Windows-->
+            <form class="card" id="winForm">
+                
+                <span class="card-title">Windows</span> <br>
+                <p id="addAnotherW" class="btn-floating waves-effect waves-light one" onclick="addWinInput('dynamicInput_2');" > <i class="material-icons">add</i> </p>
+                <p id="wRemove" class="btn-floating waves-effect waves-light"> <i class="material-icons">remove</i> </p> <br>
+                <div id="dynamicInput_2">
+                    <div class="one">
+                        <p>Window 1</p>
+                        <div class="input-field col s12">
+                            <label for="width1">Width</label>
+                            <input type="number" name="width1" id="width1" value=""> <br>
+                        </div>
+                        <div class="input-field col s12">
+                            <label for="height1">Height</label>
+                            <input type="number" name="height1" id="height1" value="">
+                        </div>
+                    </div>
+                </div> <br>
+            </form> <br> 
+        </div>
+
         
 {% endblock content %}
