@@ -27,6 +27,9 @@
     font-feature-settings: 'liga';
 }
 
+body {
+    background-color: aliceblue;
+}
 
 .one {
     margin-left: 5mm;
@@ -44,6 +47,26 @@ header {
     margin-right: 10mm;
 }
 
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main {
+    width: 60%;
+}
+
+.side-bar {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: rgb(240, 230, 240);
+    width: 35%;
+    height: 50vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2%;
+}
 
 
 

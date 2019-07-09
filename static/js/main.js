@@ -44,12 +44,12 @@ function addWinInput(divName) {
 };
 
 $(document).ready(function(){ 
-    $('#updateAll').click(function(){
+    $('#update').click(function(){
         let length = $('#length').val();
         let width = $('#width').val();
         let wallThickness = $('#wallThickness').val();
         let cL = (2*length) + (2*width) - (4*2*0.5*wallThickness);
-        $('#centreLine').text(`Centre Line: ${cL}`);
+        $('#side-bar-centre-line').text(`Centre Line: ${cL} mm`);
 
         let wallH = $('#wallH').val();
         grossArea = cL*wallH;
@@ -91,8 +91,10 @@ $(document).ready(function(){
         };
         
         let wallConstrArea = Math.round(((grossArea - totalDoorArea - totalWinArea)*1e-6)*100)/100;
+        $('#side-bar-wall-constr').text(`Area: ${wallConstrArea} sq.m`);
 
-        $('#wallConstr').text(`Area: ${wallConstrArea}`);
+        $('#animation').animate({fontSize: '24px'})
+            
     });
     
 

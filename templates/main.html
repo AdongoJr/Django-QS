@@ -2,14 +2,13 @@
 {% block title %} Main {% endblock title %}
 {% block content %}
         <h4 class="one">This is the Main Page</h4>  <br>
-        <button  value="Update All" id="updateAll" class="btn waves-effect waves-light one"> Update All
-            <i class="material-icons left">replay</i>
-        </button> <br>
+        
 
         <!--Centre Line-->
-    
+<div class="wrapper">
+    <div class="main">
         <div class="one" style="width: 750px">
-            <form class="card" id="cnt">
+            <form class="card" id="cnt" style="border-radius: 15px">
                 <div class="row">
                     <span class="card-title">Centre Line Calculation</span>
                     <div class="input-field col s12">
@@ -28,14 +27,12 @@
                         <label for="wallThickness">Wall Thickness</label>
                     </div>
                 </div>
-            
-            <h4 class="one" id="centreLine"></h4>
             </form>
         </div>
 
         <div class="one" style="width: 750px">
             <!--External wall construction-->
-            <form class="card">
+            <form class="card" style="border-radius: 15px">
                 <div class="row">
                     <span class="card-title">External Wall Construction</span>
                     <div class="input-field col s12">
@@ -44,15 +41,12 @@
                         <label for="wallH">Wall Height</label>
                     </div>    
                 </div>
-            
-                <h4 class="one"id="wallConstr"></h4>
             </form>
         </div>
 
+        <!--Doors-->
         <div class="one" style="width: 750px">
-
-            <!--Doors-->
-            <form class="card" id="doorForm">
+            <form class="card" id="doorForm" style="border-radius: 15px">
                 
                 <span class="card-title">Doors</span> <br>
                 <p id="addAnother" class="btn-floating waves-effect waves-light one" onclick="addDoorInput('dynamicInput_1');" > 
@@ -68,17 +62,16 @@
                         </div>
                         <div class="input-field col s12">
                             <label for="height1">Height</label>
-                            <input type="number" name="height1" id="height1" value="">
+                            <input type="number" name="height1" id="height1" value=""> 
                         </div>
                     </div>
-                </div> <br> <br> 
-            </form> <br> 
+                </div> <br>
+            </form>
         </div>
 
+        <!--Windows-->
         <div class="one" style="width: 750px">
-
-            <!--Windows-->
-            <form class="card" id="winForm">
+            <form class="card" id="winForm" style="border-radius: 15px">
                 
                 <span class="card-title">Windows</span> <br>
                 <p id="addAnotherW" class="btn-floating waves-effect waves-light one" onclick="addWinInput('dynamicInput_2');" > 
@@ -98,8 +91,21 @@
                         </div>
                     </div>
                 </div> <br>
-            </form> <br> 
+            </form> 
+        </div>
+    </div>
+
+        <div class="one side-bar">
+            <button id="update" class="btn waves-effect waves-light blue darken-1 one"> Update
+                <i class="material-icons left">replay</i>
+            </button> <br>
+            <div class="one">
+                <h3 id="animation">Results</h3>
+                <p id="side-bar-centre-line"></p>
+                <p id="side-bar-wall-constr"></p>
+            </div>
         </div>
 
+</div>
         
 {% endblock content %}
