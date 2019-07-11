@@ -94,9 +94,22 @@ $(document).ready(function(){
         };
         
         let wallConstrArea = Math.round(((grossArea - totalDoorArea - totalWinArea)*1e-6)*100)/100;
-        $('#side-bar-wall-constr').text(`Area: ${wallConstrArea} sq.m`);
+        $('#side-bar-wall-constr').text(` Ext. Wall Construction: ${wallConstrArea} sq.m`);
+
+        let extPrmt = 2*length + 2*width;
+        let grossExtWallFin = extPrmt * wallH;
+        let extWallFin = Math.round(((grossExtWallFin - totalDoorArea - totalWinArea)*1e-6)*100)/100;
+        $('#side-bar-eWall-fin').text(` Ext. Wall Finishes: ${extWallFin} sq.m`);
+
+        let intPrmt = extPrmt - 2*(4*2*0.5*wallThickness)
+        let grossIntWallFin = intPrmt * wallH;
+        let intWallFin = Math.round(((grossIntWallFin - totalDoorArea - totalWinArea)*1e-6)*100)/100;
+        $('#side-bar-iWall-fin').text(` Int. Wall Finishes: ${intWallFin} sq.m`);
+
 
         $('#animation').animate({fontSize: '24px'})
+        
+
             
     });
     
