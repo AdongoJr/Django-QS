@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']  # allowance for making use of my IP address
 # Application definition
 
 INSTALLED_APPS = [
+    'downtime', # for rendering site maintenace page
     'takeoff.apps.TakeoffConfig', # first app
     'accounts.apps.AccountsConfig', # dedicated for registering users
     'django.contrib.admin',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'downtime.middleware.DowntimeMiddleware', # downtime middleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -128,3 +130,8 @@ LOGOUT_REDIRECT_URL = 'home'
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 #AUTH_USER_MODEL = "users.CustomUser"
+
+
+DOWNTIME_EXEMPT_PATHS = (
+    '/admin',
+)
