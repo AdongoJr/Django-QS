@@ -25,7 +25,7 @@ SECRET_KEY = '8&5xp2qu$5q0vm)6iz&pm=fhgri+g@)d^jbx=8af4^&sdk40u9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']  # allowance for making use of my IP address
+ALLOWED_HOSTS = ['*']  # allowance for making use of my IP address, etc
 
 
 # Application definition
