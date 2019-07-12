@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'downtime.middleware.DowntimeMiddleware', # downtime middleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'whitenoise.middleware.whiteNoiseMiddleware', #new!
+    'whitenoise.middleware.WhiteNoiseMiddleware', #new!
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
