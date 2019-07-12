@@ -9,6 +9,7 @@ verify_ssl = true
 django = "==2.2.1"
 django-downtime = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.7"
