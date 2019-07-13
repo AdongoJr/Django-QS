@@ -134,23 +134,8 @@ $(document).ready(function(){
         }
     });
 
-    /*
-    let alterClass = function() {
-        let ww = document.body.clientWidth;
-        if (ww < 600) {
-            
-        } else if (ww >= 601) {
-            
-        };
-    };
-    $(window).resize(function(){
-        alterClass();
-    });
-    // fire it when the page first loads
-    alterClass();
-    */
-
 });
+
 
 
 
