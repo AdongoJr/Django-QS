@@ -106,6 +106,10 @@ $(document).ready(function(){
         let intWallFin = Math.round(((grossIntWallFin - totalDoorArea - totalWinArea)*1e-6)*100)/100;
         $('#side-bar-iWall-fin').text(` Int. Wall Finishes: ${intWallFin} sq.m`);
 
+        let g_floorFin = (length - (2*wallThickness)) * (width - (2*wallThickness));
+        let floorFin = Math.round(((g_floorFin)*1e-6)*100)/100;
+        $('#side-bar-floor-fin').text(` Floor Finishes: ${floorFin} sq.m`);
+
 
         $('#animation').animate({fontSize: '24px'})
         
