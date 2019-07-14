@@ -47,12 +47,13 @@ $(document).ready(function(){
     const currentYear = new Date().getFullYear();
     $('#copyright').text(`\u00a9 ${currentYear} AdongoJr | Terms and Conditions apply`).css('text-align', 'center');
 
-    $('#update').click(function(){
+    $('#update, #m_update').click(function(){
         let length = $('#length').val();
         let width = $('#width').val();
         let wallThickness = $('#wallThickness').val();
         let cL = (2*length) + (2*width) - (4*2*0.5*wallThickness);
         $('#side-bar-centre-line').text(`Centre Line: ${cL} mm`);
+        $('#m_side-bar-centre-line').text(`Centre Line: ${cL} mm`);
 
         let wallH = $('#wallH').val();
         grossArea = cL*wallH;
@@ -95,23 +96,28 @@ $(document).ready(function(){
         
         let wallConstrArea = Math.round(((grossArea - totalDoorArea - totalWinArea)*1e-6)*100)/100;
         $('#side-bar-wall-constr').text(` Ext. Wall Construction: ${wallConstrArea} sq.m`);
+        $('#m_side-bar-wall-constr').text(` Ext. Wall Construction: ${wallConstrArea} sq.m`);
 
         let extPrmt = 2*length + 2*width;
         let grossExtWallFin = extPrmt * wallH;
         let extWallFin = Math.round(((grossExtWallFin - totalDoorArea - totalWinArea)*1e-6)*100)/100;
         $('#side-bar-eWall-fin').text(` Ext. Wall Finishes: ${extWallFin} sq.m`);
+        $('#m_side-bar-eWall-fin').text(` Ext. Wall Finishes: ${extWallFin} sq.m`);
 
         let intPrmt = extPrmt - 2*(4*2*0.5*wallThickness)
         let grossIntWallFin = intPrmt * wallH;
         let intWallFin = Math.round(((grossIntWallFin - totalDoorArea - totalWinArea)*1e-6)*100)/100;
         $('#side-bar-iWall-fin').text(` Int. Wall Finishes: ${intWallFin} sq.m`);
+        $('#m_side-bar-iWall-fin').text(` Int. Wall Finishes: ${intWallFin} sq.m`);
 
         let g_floorFin = (length - (2*wallThickness)) * (width - (2*wallThickness));
         let floorFin = Math.round(((g_floorFin)*1e-6)*100)/100;
         $('#side-bar-floor-fin').text(` Floor Finishes: ${floorFin} sq.m`);
+        $('#m_side-bar-floor-fin').text(` Floor Finishes: ${floorFin} sq.m`);
 
 
         $('#animation').animate({fontSize: '24px'})
+        $('#m_animation').animate({fontSize: '24px'})
         
 
             
@@ -139,6 +145,11 @@ $(document).ready(function(){
     });
 
     $('.sidenav').sidenav();
+
+    $('.modal').modal({
+        opacity: 0.4,
+        inDuration: 250,
+    });
 
 });
 

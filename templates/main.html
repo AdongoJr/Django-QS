@@ -1,6 +1,24 @@
 {% extends 'base.html' %}
 {% block title %} Main {% endblock title %}
 {% block content %}
+
+        
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4 id="m_animation">Results</h4>
+            <p id="m_side-bar-centre-line"></p>
+            <p id="m_side-bar-wall-constr"></p>
+            <p id="m_side-bar-eWall-fin"></p>
+            <p id="m_side-bar-iWall-fin"></p>
+            <p id="m_side-bar-floor-fin"></p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Okay</a>
+          </div>
+        </div>
+
         <h4 class="one">Quantities Take-Off</h4>  <br>
 
         <!--Centre Line-->
@@ -114,6 +132,9 @@
     </div>
 
 </div>
+
+<!--modal trigger-->
+<a id="m_update" class="green waves-effect waves-light btn modal-trigger hide-on-large-only" href="#modal1">Update</a> <br> <br>
 
         
 {% endblock content %}
