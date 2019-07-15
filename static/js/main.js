@@ -97,25 +97,21 @@ $(document).ready(function(){
         };
         
         let wallConstrArea = Math.round(((grossArea - totalDoorArea - totalWinArea)*1e-6)*100)/100;
-        $('#side-bar-wall-constr').text(`${wallConstrArea} sq.m`);
-        $('#m_side-bar-wall-constr').text(`${wallConstrArea} sq.m`);
+        $('#side-bar-wall-constr, #m_side-bar-wall-constr').text(`${wallConstrArea} sq.m`);
 
         let extPrmt = 2*length + 2*width;
         let grossExtWallFin = extPrmt * wallH;
         let extWallFin = Math.round(((grossExtWallFin - totalDoorArea - totalWinArea)*1e-6)*100)/100;
-        $('#side-bar-eWall-fin').text(`${extWallFin} sq.m`);
-        $('#m_side-bar-eWall-fin').text(`${extWallFin} sq.m`);
+        $('#side-bar-eWall-fin, #m_side-bar-eWall-fin').text(`${extWallFin} sq.m`);
 
         let intPrmt = extPrmt - 2*(4*2*0.5*wallThickness)
         let grossIntWallFin = intPrmt * wallH;
         let intWallFin = Math.round(((grossIntWallFin - totalDoorArea - totalWinArea)*1e-6)*100)/100;
-        $('#side-bar-iWall-fin').text(` I${intWallFin} sq.m`);
-        $('#m_side-bar-iWall-fin').text(`${intWallFin} sq.m`);
+        $('#side-bar-iWall-fin, #m_side-bar-iWall-fin').text(`${intWallFin} sq.m`);
 
         let g_floorFin = (length - (2*wallThickness)) * (width - (2*wallThickness));
         let floorFin = Math.round(((g_floorFin)*1e-6)*100)/100;
-        $('#side-bar-floor-fin').text(`${floorFin} sq.m`);
-        $('#m_side-bar-floor-fin').text(`${floorFin} sq.m`);
+        $('#side-bar-floor-fin, #m_side-bar-floor-fin').text(`${floorFin} sq.m`);
 
         $('#table').show();
         $('#animation').animate({fontSize: '24px'})
