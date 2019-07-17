@@ -176,10 +176,3 @@ $(document).ready(function(){
     });
 
 });
-
-
-
-
-
-
-
