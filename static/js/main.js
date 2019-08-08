@@ -43,6 +43,7 @@ function addWinInput(divName) {
     }
 };
 
+// jQuery code starts here
 $(document).ready(function(){ 
     $('#table').hide();
 
@@ -54,8 +55,7 @@ $(document).ready(function(){
         let width = $('#width').val();
         let wallThickness = $('#wallThickness').val();
         let cL = (2*length) + (2*width) - (4*2*0.5*wallThickness);
-        $('#side-bar-centre-line').text(`${cL} mm`);
-        $('#m_side-bar-centre-line').text(`${cL} mm`);
+        $('#side-bar-centre-line, #m_side-bar-centre-line').text(`${cL} mm`);
 
         let wallH = $('#wallH').val();
         grossArea = cL*wallH;
@@ -152,7 +152,8 @@ $(document).ready(function(){
         if (dCounter==1) {
             alert('Cannot remove first input field!')
         } else {
-            let list = document.getElementById('dynamicInput_1');
+            //let list = document.getElementById('dynamicInput_1');
+            let list = $('#dynamicInput_1');
             list.removeChild(list.lastElementChild);
             dCounter--;
         }
@@ -162,7 +163,8 @@ $(document).ready(function(){
         if (wCounter==1) {
             alert('Cannot remove first input field!')
         } else {
-            let list = document.getElementById('dynamicInput_2');
+            //let list = document.getElementById('dynamicInput_2');
+            let list = $('#dynamicInput_2');
             list.removeChild(list.lastElementChild);
             wCounter--;
         }
@@ -176,3 +178,7 @@ $(document).ready(function(){
     });
 
 });
+
+
+
+
