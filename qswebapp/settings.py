@@ -139,3 +139,6 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 DOWNTIME_EXEMPT_PATHS = (
     '/admin',
 ) 
+
+
+
