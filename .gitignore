@@ -4,3 +4,4 @@
 __pycache__/
 local_settings.pycdb.sqlite3
 .vscode
+.sqlite3
