@@ -27,6 +27,7 @@
         <div class="nav-wrapper teal">
             <a href="{% url 'home' %}" class="brand-logo one">Take Off</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/main" class="waves-effect">Main</a></li>
                 <li><a href="#!">Settings</a></li> 
                 <li><a href="#!">About</a></li>
                 <li><a href="{% url 'help' %}">Help</a></li>
@@ -70,8 +71,9 @@
         {% endblock content %} 
     </div> 
 
-    <div class="footer">
-        <footer id="copyright"></footer>
+    <div class="footer" style="margin-top: 35px; margin-bottom: 35px">
+        <!--Copyright-->
+      <footer class="center">Copyright &copy; {% now 'o'%} | <a href="{% url 't_and_c' %}">Terms and Conditions</a></footer>
     </div>
 
     {% block javascript %}

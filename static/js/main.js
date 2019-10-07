@@ -47,9 +47,6 @@ function addWinInput(divName) {
 $(document).ready(function(){ 
     $('#table').hide();
 
-    const currentYear = new Date().getFullYear();
-    $('#copyright').text(`\u00a9 ${currentYear} AdongoJr | Terms and Conditions apply`).css('text-align', 'center');
-
     $('#update, #m_update').click(function(){
         let length = $('#length').val();
         let width = $('#width').val();
