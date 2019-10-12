@@ -131,39 +131,77 @@ $(document).ready(function(){
         $('#side-bar-floor-fin, #m_side-bar-floor-fin').text(`${floorFin} sq.m`);
 
         // Excavation
-        let fdnWidth = $('#fdnWidth').val();
-        let excDepth = $('#excDepth').val();
-        if (excDepth > 4500 && excDepth <= 6000) {
-            let vol = cL * fdnWidth * 1500 * 1e-9;
-            let vol_1 = cL * fdnWidth * 1500 * 1e-9;
-            let vol_2 = cL * fdnWidth * 1500 * 1e-9;
-            let vol_3 = cL * fdnWidth * (excDepth - 4500) * 1e-9;
-            $('#one, #m_one').text(`${vol} cu.m`);
-            $('#two, #m_two').text(`${vol_1} cu.m`);
-            $('#three, #m_three').text(`${vol_2} cu.m`);
-            $('#four, #m_four').text(`${vol_3} cu.m`);
-        } else if (excDepth > 3000 && excDepth <= 4500) {
-            let vol = cL * fdnWidth * 1500 * 1e-9;
-            let vol_1 = cL * fdnWidth * 1500 * 1e-9;
-            let vol_2 = cL * fdnWidth * (excDepth - 3000) * 1e-9;
-            $('#one, #m_one').text(`${vol} cu.m`);
-            $('#two, #m_two').text(`${vol_1} cu.m`);
-            $('#three, #m_three').text(`${vol_2} cu.m`);
+        function excavation() {
+            $('#One, #m_One, #Two, #m_Two, #Three, #m_Three, #Four, #m_Four').hide();
 
-            $('#Four, #m_Four').hide();
-        } else if (excDepth > 1500 && excDepth <= 3000) {
-            let vol = cL * fdnWidth * 1500 * 1e-9;
-            let vol_1 = cL * fdnWidth * (excDepth - 1500) * 1e-9;
-            $('#one, #m_one').text(`${vol} cu.m`);
-            $('#two, #m_two').text(`${vol_1} cu.m`);
-
-            $('#Three, #m_Three, #Four, #m_Four').hide();
-        } else if (excDepth <= 1500) {
-            let vol = cL * fdnWidth * excDepth * 1e-9;
-            $('#one, #m_one').text(`${vol} cu.m`);
-
-            $('#Two, #m_Two, #Three, #m_Three, #Four, #m_Four').hide();
+            let fdnWidth = $('#fdnWidth').val();
+            let excDepth = $('#excDepth').val();
+            
+            if (excDepth > 4500 && excDepth <= 6000) {
+                let vol = cL * fdnWidth * 1500 * 1e-9;
+                let vol_1 = cL * fdnWidth * 1500 * 1e-9;
+                let vol_2 = cL * fdnWidth * 1500 * 1e-9;
+                let vol_3 = cL * fdnWidth * (excDepth - 4500) * 1e-9;
+                $('#one, #m_one').text(`${vol} cu.m`);
+                $('#two, #m_two').text(`${vol_1} cu.m`);
+                $('#three, #m_three').text(`${vol_2} cu.m`);
+                $('#four, #m_four').text(`${vol_3} cu.m`);
+                $('#One, #m_One, #Two, #m_Two, #Three, #m_Three, #Four, m_Four').show();
+            } else if (excDepth > 3000 && excDepth <= 4500) {
+                let vol = cL * fdnWidth * 1500 * 1e-9;
+                let vol_1 = cL * fdnWidth * 1500 * 1e-9;
+                let vol_2 = cL * fdnWidth * (excDepth - 3000) * 1e-9;
+                $('#one, #m_one').text(`${vol} cu.m`);
+                $('#two, #m_two').text(`${vol_1} cu.m`);
+                $('#three, #m_three').text(`${vol_2} cu.m`);
+                $('#One, #m_One, #Two, #m_Two, #Three, #m_Three').show();
+            } else if (excDepth > 1500 && excDepth <= 3000) {
+                let vol = cL * fdnWidth * 1500 * 1e-9;
+                let vol_1 = cL * fdnWidth * (excDepth - 1500) * 1e-9;
+                $('#one, #m_one').text(`${vol} cu.m`);
+                $('#two, #m_two').text(`${vol_1} cu.m`);
+                $('#One, #m_One, #Two, #m_Two').show();
+            } else if (excDepth <= 1500) {
+                let vol = cL * fdnWidth * excDepth * 1e-9;
+                $('#one, #m_one').text(`${vol} cu.m`);
+                $('#One, #m_One').show();
+            } 
         }
+        excavation();
+        
+        // let fdnWidth = $('#fdnWidth').val();
+        // let excDepth = $('#excDepth').val();
+        // if (excDepth > 4500 && excDepth <= 6000) {
+        //     let vol = cL * fdnWidth * 1500 * 1e-9;
+        //     let vol_1 = cL * fdnWidth * 1500 * 1e-9;
+        //     let vol_2 = cL * fdnWidth * 1500 * 1e-9;
+        //     let vol_3 = cL * fdnWidth * (excDepth - 4500) * 1e-9;
+        //     $('#one, #m_one').text(`${vol} cu.m`);
+        //     $('#two, #m_two').text(`${vol_1} cu.m`);
+        //     $('#three, #m_three').text(`${vol_2} cu.m`);
+        //     $('#four, #m_four').text(`${vol_3} cu.m`);
+        // } else if (excDepth > 3000 && excDepth <= 4500) {
+        //     let vol = cL * fdnWidth * 1500 * 1e-9;
+        //     let vol_1 = cL * fdnWidth * 1500 * 1e-9;
+        //     let vol_2 = cL * fdnWidth * (excDepth - 3000) * 1e-9;
+        //     $('#one, #m_one').text(`${vol} cu.m`);
+        //     $('#two, #m_two').text(`${vol_1} cu.m`);
+        //     $('#three, #m_three').text(`${vol_2} cu.m`);
+
+        //     $('#Four, #m_Four').hide();
+        // } else if (excDepth > 1500 && excDepth <= 3000) {
+        //     let vol = cL * fdnWidth * 1500 * 1e-9;
+        //     let vol_1 = cL * fdnWidth * (excDepth - 1500) * 1e-9;
+        //     $('#one, #m_one').text(`${vol} cu.m`);
+        //     $('#two, #m_two').text(`${vol_1} cu.m`);
+
+        //     $('#Three, #m_Three, #Four, #m_Four').hide();
+        // } else if (excDepth <= 1500) {
+        //     let vol = cL * fdnWidth * excDepth * 1e-9;
+        //     $('#one, #m_one').text(`${vol} cu.m`);
+
+        //     $('#Two, #m_Two, #Three, #m_Three, #Four, #m_Four').hide();
+        // }
         // $('#one, #m_one').text(`${vol} cu.m`);
         // $('#two, #m_two').text(`${vol_1} cu.m`);
         // $('#three, #m_three').text(`${vol_2} cu.m`);
