@@ -159,7 +159,7 @@ $(document).ready(function(){
                 $('#two, #m_two').text(`${vol_1} cu.m`);
                 $('#three, #m_three').text(`${vol_2} cu.m`);
                 $('#four, #m_four').text(`${vol_3} cu.m`);
-                $('#One, #m_One, #Two, #m_Two, #Three, #m_Three, #Four, m_Four').show();
+                $('#One, #m_One, #Two, #m_Two, #Three, #m_Three, #Four, #m_Four').show();
             } else if (excDepth > 3000 && excDepth <= 4500) {
                 let vol = vRound2dp(cL * fdnWidth * 1500)
                 let vol_1 = vol
