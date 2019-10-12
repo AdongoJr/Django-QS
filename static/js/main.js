@@ -21,6 +21,26 @@ function addDoorInput(divName) {
     }
 };
 
+function removeDoorInput(divName) {
+    if (dCounter==1) {
+        alert('Cannot remove first input field!')
+    } else {
+        let list = document.getElementById('dynamicInput_1');
+        list.removeChild(list.lastElementChild);
+        dCounter--;
+    }
+};
+
+function removeWinInput(divName) {
+    if (wCounter==1) {
+        alert('Cannot remove first input field!')
+    } else {
+        let list = document.getElementById('dynamicInput_2');
+        list.removeChild(list.lastElementChild);
+        wCounter--;
+    }
+};
+
 let wCounter = 1;
 let wLimit = 5;
 function addWinInput(divName) {
@@ -145,27 +165,27 @@ $(document).ready(function(){
     });
     
 
-    $('#dRemove').click(function(){
-        if (dCounter==1) {
-            alert('Cannot remove first input field!')
-        } else {
-            //let list = document.getElementById('dynamicInput_1');
-            let list = $('#dynamicInput_1');
-            list.removeChild(list.lastElementChild);
-            dCounter--;
-        }
-    });
+    // $('#dRemove').click(function(){
+    //     if (dCounter==1) {
+    //         alert('Cannot remove first input field!')
+    //     } else {
+    //         //let list = document.getElementById('dynamicInput_1');
+    //         let list = $('#dynamicInput_1');
+    //         list.removeChild(list.lastElementChild);
+    //         dCounter--;
+    //     }
+    // });
 
-    $('#wRemove').click(function(){
-        if (wCounter==1) {
-            alert('Cannot remove first input field!')
-        } else {
-            //let list = document.getElementById('dynamicInput_2');
-            let list = $('#dynamicInput_2');
-            list.removeChild(list.lastElementChild);
-            wCounter--;
-        }
-    });
+    // $('#wRemove').click(function(){
+    //     if (wCounter==1) {
+    //         alert('Cannot remove first input field!')
+    //     } else {
+    //         //let list = document.getElementById('dynamicInput_2');
+    //         let list = $('#dynamicInput_2');
+    //         list.removeChild(list.lastElementChild);
+    //         wCounter--;
+    //     }
+    // });
 
     $('.sidenav').sidenav();
 

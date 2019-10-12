@@ -16,13 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from takeoff.views import terms_and_conditions, privacy_policy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')), # sign up
     path('accounts/', include('django.contrib.auth.urls')), # login
     path('', include('takeoff.urls')),
-    path('terms_and_conditions/', terms_and_conditions, name='t_and_c' ),
-    path('privacy_policy/', privacy_policy, name='p_p'),
+
 ]
