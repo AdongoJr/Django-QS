@@ -63,6 +63,14 @@ function removeWinInput(divName) {
     }
 };
 
+function vRound2dp(volume) {
+    return Math.round((volume*1e-9)*100)/100;
+}
+
+function aRound2dp(area) {
+    return Math.round((area*1e-6)*100)/100;
+}
+
 // jQuery code starts here
 $(document).ready(function(){ 
     $('#table').hide();
@@ -71,6 +79,8 @@ $(document).ready(function(){
         let length = $('#length').val();
         let width = $('#width').val();
         let wallThickness = $('#wallThickness').val();
+
+        // Center Line
         let cL = (2*length) + (2*width) - (4*2*0.5*wallThickness);
         $('#side-bar-centre-line, #m_side-bar-centre-line').text(`${cL} mm`);
 
@@ -113,21 +123,24 @@ $(document).ready(function(){
             totalWinArea += (wWidths[i]*wHeights[i]);
         };
         
-        let wallConstrArea = Math.round(((grossArea - totalDoorArea - totalWinArea)*1e-6)*100)/100;
+        // External Wall Construction
+        let wallConstrArea = aRound2dp(grossArea - totalDoorArea - totalWinArea)
         $('#side-bar-wall-constr, #m_side-bar-wall-constr').text(`${wallConstrArea} sq.m`);
 
+        // External Wall Finishes
         let extPrmt = 2*length + 2*width;
         let grossExtWallFin = extPrmt * wallH;
-        let extWallFin = Math.round(((grossExtWallFin - totalDoorArea - totalWinArea)*1e-6)*100)/100;
+        let extWallFin = aRound2dp(grossExtWallFin - totalDoorArea - totalWinArea)
         $('#side-bar-eWall-fin, #m_side-bar-eWall-fin').text(`${extWallFin} sq.m`);
 
+        // INternal Wall Finishes
         let intPrmt = extPrmt - 2*(4*2*0.5*wallThickness)
         let grossIntWallFin = intPrmt * wallH;
-        let intWallFin = Math.round(((grossIntWallFin - totalDoorArea - totalWinArea)*1e-6)*100)/100;
+        let intWallFin = aRound2dp(grossIntWallFin - totalDoorArea - totalWinArea)
         $('#side-bar-iWall-fin, #m_side-bar-iWall-fin').text(`${intWallFin} sq.m`);
 
         let grossfloorFin = (length - (2*wallThickness)) * (width - (2*wallThickness));
-        let floorFin = Math.round(((grossfloorFin)*1e-6)*100)/100;
+        let floorFin = aRound2dp(grossfloorFin)
         $('#side-bar-floor-fin, #m_side-bar-floor-fin').text(`${floorFin} sq.m`);
 
         // Excavation
@@ -136,80 +149,42 @@ $(document).ready(function(){
 
             let fdnWidth = $('#fdnWidth').val();
             let excDepth = $('#excDepth').val();
-            
+
             if (excDepth > 4500 && excDepth <= 6000) {
-                let vol = cL * fdnWidth * 1500 * 1e-9;
-                let vol_1 = cL * fdnWidth * 1500 * 1e-9;
-                let vol_2 = cL * fdnWidth * 1500 * 1e-9;
-                let vol_3 = cL * fdnWidth * (excDepth - 4500) * 1e-9;
+                let vol = vRound2dp(cL * fdnWidth * 1500)
+                let vol_1 = vol
+                let vol_2 = vol
+                let vol_3 = vRound2dp(cL * fdnWidth * (excDepth - 4500));
                 $('#one, #m_one').text(`${vol} cu.m`);
                 $('#two, #m_two').text(`${vol_1} cu.m`);
                 $('#three, #m_three').text(`${vol_2} cu.m`);
                 $('#four, #m_four').text(`${vol_3} cu.m`);
                 $('#One, #m_One, #Two, #m_Two, #Three, #m_Three, #Four, m_Four').show();
             } else if (excDepth > 3000 && excDepth <= 4500) {
-                let vol = cL * fdnWidth * 1500 * 1e-9;
-                let vol_1 = cL * fdnWidth * 1500 * 1e-9;
-                let vol_2 = cL * fdnWidth * (excDepth - 3000) * 1e-9;
+                let vol = vRound2dp(cL * fdnWidth * 1500)
+                let vol_1 = vol
+                let vol_2 = vRound2dp(cL * fdnWidth * (excDepth - 3000))
                 $('#one, #m_one').text(`${vol} cu.m`);
                 $('#two, #m_two').text(`${vol_1} cu.m`);
                 $('#three, #m_three').text(`${vol_2} cu.m`);
                 $('#One, #m_One, #Two, #m_Two, #Three, #m_Three').show();
             } else if (excDepth > 1500 && excDepth <= 3000) {
-                let vol = cL * fdnWidth * 1500 * 1e-9;
-                let vol_1 = cL * fdnWidth * (excDepth - 1500) * 1e-9;
+                let vol = vRound2dp(cL * fdnWidth * 1500);
+                let vol_1 = vRound2dp(cL * fdnWidth * (excDepth - 1500))
                 $('#one, #m_one').text(`${vol} cu.m`);
                 $('#two, #m_two').text(`${vol_1} cu.m`);
                 $('#One, #m_One, #Two, #m_Two').show();
             } else if (excDepth <= 1500) {
-                let vol = cL * fdnWidth * excDepth * 1e-9;
+                let vol = vRound2dp(cL * fdnWidth * excDepth);
                 $('#one, #m_one').text(`${vol} cu.m`);
                 $('#One, #m_One').show();
             } 
         }
         excavation();
-        
-        // let fdnWidth = $('#fdnWidth').val();
-        // let excDepth = $('#excDepth').val();
-        // if (excDepth > 4500 && excDepth <= 6000) {
-        //     let vol = cL * fdnWidth * 1500 * 1e-9;
-        //     let vol_1 = cL * fdnWidth * 1500 * 1e-9;
-        //     let vol_2 = cL * fdnWidth * 1500 * 1e-9;
-        //     let vol_3 = cL * fdnWidth * (excDepth - 4500) * 1e-9;
-        //     $('#one, #m_one').text(`${vol} cu.m`);
-        //     $('#two, #m_two').text(`${vol_1} cu.m`);
-        //     $('#three, #m_three').text(`${vol_2} cu.m`);
-        //     $('#four, #m_four').text(`${vol_3} cu.m`);
-        // } else if (excDepth > 3000 && excDepth <= 4500) {
-        //     let vol = cL * fdnWidth * 1500 * 1e-9;
-        //     let vol_1 = cL * fdnWidth * 1500 * 1e-9;
-        //     let vol_2 = cL * fdnWidth * (excDepth - 3000) * 1e-9;
-        //     $('#one, #m_one').text(`${vol} cu.m`);
-        //     $('#two, #m_two').text(`${vol_1} cu.m`);
-        //     $('#three, #m_three').text(`${vol_2} cu.m`);
-
-        //     $('#Four, #m_Four').hide();
-        // } else if (excDepth > 1500 && excDepth <= 3000) {
-        //     let vol = cL * fdnWidth * 1500 * 1e-9;
-        //     let vol_1 = cL * fdnWidth * (excDepth - 1500) * 1e-9;
-        //     $('#one, #m_one').text(`${vol} cu.m`);
-        //     $('#two, #m_two').text(`${vol_1} cu.m`);
-
-        //     $('#Three, #m_Three, #Four, #m_Four').hide();
-        // } else if (excDepth <= 1500) {
-        //     let vol = cL * fdnWidth * excDepth * 1e-9;
-        //     $('#one, #m_one').text(`${vol} cu.m`);
-
-        //     $('#Two, #m_Two, #Three, #m_Three, #Four, #m_Four').hide();
-        // }
-        // $('#one, #m_one').text(`${vol} cu.m`);
-        // $('#two, #m_two').text(`${vol_1} cu.m`);
-        // $('#three, #m_three').text(`${vol_2} cu.m`);
-        // $('#four, #m_four').text(`${vol_3} cu.m`);
 
         // Site Clearance
         let fdnSpread = $('#fdnSpread').val();
-        let siteClearance = (+length + (2*fdnSpread)) * (+width + (2*fdnSpread)) * 1e-6; 
+        let siteClearance = aRound2dp((+length + (2*fdnSpread)) * (+width + (2*fdnSpread)))
         $('#side-bar-site-clearance, #m_side-bar-site-clearance').text(`${siteClearance} sq.m`);
 
 

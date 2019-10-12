@@ -65,7 +65,7 @@ header {
     padding: 3px;
     background-color: rgb(234, 238, 238);
     width: 45%;
-    max-height: 50vh;
+    max-height: 75vh;
     overflow-y: auto;
     position: -webkit-sticky;
     position: sticky;
