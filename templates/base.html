@@ -28,17 +28,19 @@
             <a href="{% url 'home' %}" class="brand-logo one">Take Off</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{% url 'main' %}" class="waves-effect">Main</a></li>
-                {% comment %}<li><a href="{% url 'settings' %}">Settings</a></li> {% endcomment %} 
+                {% comment %} <li><a href="{% url 'settings' %}">Settings</a></li> {% endcomment %} 
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'help' %}">Help</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Log out</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
     <div class="one">
     {% if user.is_authenticated %} 
         <p style="color:orange">Logged in as {{ user.username }}!</p> 
-        <p><a href="{% url 'logout' %}">Log out</a></p>
-        <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+        {% comment %} <p><a href="{% url 'password_reset' %}">Reset Password</a></p> {% endcomment %}
     {% else %} 
         <p>You are not logged in.</p> 
         <p><a href="{% url 'login' %}">Log in</a> or <a href="{% url 'signup' %}">Register</a></p>

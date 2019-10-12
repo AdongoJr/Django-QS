@@ -16,25 +16,29 @@
                     <i class="material-icons prefix">account_box</i>
                     {{ form.username }}
                     {{ form.username.label_tag }}
-                    <p> {{ form.username.help_text }} </p>
+                    <i> {{ form.username.help_text }} </i>
                 </div>
 
                 <div class="input-field col s12">
                     <i class="material-icons prefix">lock</i>
                     {{ form.password1 }}
                     {{ form.password1.label_tag }}
-                    <p> {{ form.password1.help_text }} </p>
+                    <i> {{ form.password1.help_text }} </i>
                 </div>
 
                 <div class="input-field col s12">
                     <i class="material-icons prefix">lock</i>
                     {{ form.password2 }}
                     {{ form.password2.label_tag }}
-                    <p> {{ form.password2.help_text }} </p>
-                </div>
+                    <i> {{ form.password2.help_text }} </i>
+                </div> <br>
+
+                <p>
+                    By clicking the 'Register Button' below, you are agreeing to the <b><a href="{% url 't_and_c' %}">Terms and Conditions</a>.</b>
+                </p>
                 
                 <button class="btn btn-outline-info" type="submit">Register</button>
             </form>
-            <p>If you have an account <a href="/accounts/login"><strong>Login</strong></a> instead.</p>
+            <p>If you have an account, <a href="/accounts/login"><strong>Login</strong></a> instead.</p>
         </div>    
 {% endblock content %}
