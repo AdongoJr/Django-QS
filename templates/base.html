@@ -21,33 +21,39 @@
       });
     </script>
 </head> 
+
 <body> 
     <div>
-    <nav class="hide-on-med-and-down">
-        <div class="nav-wrapper teal">
-            <a href="{% url 'home' %}" class="brand-logo one">Take Off</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="{% url 'main' %}" class="waves-effect">Main</a></li>
-                {% comment %} <li><a href="{% url 'settings' %}">Settings</a></li> {% endcomment %} 
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'help' %}">Help</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Log out</a></li>
-                {% endif %}
-            </ul>
+        <!-- Navbar (Fixed) -->
+        <div class="navbar-fixed">
+            <nav class="hide-on-med-and-down">
+                <div class="nav-wrapper teal">
+                    <a href="{% url 'home' %}" class="brand-logo one">Take Off</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="{% url 'main' %}" class="waves-effect">Main</a></li>
+                        {% comment %} <li><a href="{% url 'settings' %}">Settings</a></li> {% endcomment %} 
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'help' %}">Help</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}">Log out</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
         </div>
-    </nav>
-    <div class="one">
-    {% if user.is_authenticated %} 
-        <p style="color:orange">Logged in as {{ user.username }}!</p> 
-        {% comment %} <p><a href="{% url 'password_reset' %}">Reset Password</a></p> {% endcomment %}
-    {% else %} 
-        <p>You are not logged in.</p> 
-        <p><a href="{% url 'login' %}">Log in</a> or <a href="{% url 'signup' %}">Register</a></p>
-    {% endif %}
-    </div>
+
+        <div class="one">
+        {% if user.is_authenticated %} 
+            <p style="color:orange">Logged in as {{ user.username }}!</p> 
+            {% comment %} <p><a href="{% url 'password_reset' %}">Reset Password</a></p> {% endcomment %}
+        {% else %} 
+            <p>You are not logged in.</p> 
+            <p><a href="{% url 'login' %}">Log in</a> or <a href="{% url 'signup' %}">Register</a></p>
+        {% endif %}
+        </div>
     </div>
 
+    <!-- Mobile Sidenav slider -->
     <ul id="slide-out" class="sidenav">
         <li>
             <div class="user-view">
@@ -56,13 +62,13 @@
                 </div>
             </div>
         </li>
-        <li><a href="/" class="waves-effect"><i class="material-icons">home</i>Home</a></li>
-        <li><a href="/main" class="waves-effect"><i class="material-icons">work</i>Main</a></li>
-        <li><a href="/help" class="waves-effect"><i class="material-icons">help_outline</i>Help</a></li>
+        <li><a href="{% url 'home' %}" class="waves-effect"><i class="material-icons">home</i>Home</a></li>
+        <li><a href="{% url 'main' %}" class="waves-effect"><i class="material-icons">work</i>Main</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">More</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Settings</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">info_outline</i>About</a></li>
+        <li><a href="{% url 'help' %}" class="waves-effect"><i class="material-icons">help_outline</i>Help</a></li>
+        <li><a class="waves-effect" href="{% url 'about' %}"><i class="material-icons">info_outline</i>About</a></li>
+        <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons">power_settings_new</i>Log out</a></li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only one">
         <i class="material-icons">menu</i>

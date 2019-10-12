@@ -27,6 +27,8 @@
     font-feature-settings: 'liga';
 }
 
+
+/* my custom css */
 body {
     background-color: aliceblue;
 }
@@ -58,8 +60,8 @@ header {
 
 .side-bar {
     margin-top: 21px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid rosybrown;
+    border-radius: 10px;
     padding: 3px;
     background-color: rgb(234, 238, 238);
     width: 45%;
@@ -67,7 +69,7 @@ header {
     overflow-y: auto;
     position: -webkit-sticky;
     position: sticky;
-    top: 2%;
+    top: 10%;
 }
 
 #m_update {

@@ -31,16 +31,6 @@ function removeDoorInput(divName) {
     }
 };
 
-function removeWinInput(divName) {
-    if (wCounter==1) {
-        alert('Cannot remove first input field!')
-    } else {
-        let list = document.getElementById('dynamicInput_2');
-        list.removeChild(list.lastElementChild);
-        wCounter--;
-    }
-};
-
 let wCounter = 1;
 let wLimit = 5;
 function addWinInput(divName) {
@@ -60,6 +50,16 @@ function addWinInput(divName) {
             '</div>';
         document.getElementById(divName).appendChild(newdiv);
         wCounter ++;
+    }
+};
+
+function removeWinInput(divName) {
+    if (wCounter==1) {
+        alert('Cannot remove first input field!')
+    } else {
+        let list = document.getElementById('dynamicInput_2');
+        list.removeChild(list.lastElementChild);
+        wCounter--;
     }
 };
 
@@ -130,28 +130,46 @@ $(document).ready(function(){
         let floorFin = Math.round(((grossfloorFin)*1e-6)*100)/100;
         $('#side-bar-floor-fin, #m_side-bar-floor-fin').text(`${floorFin} sq.m`);
 
+        // Excavation
         let fdnWidth = $('#fdnWidth').val();
         let excDepth = $('#excDepth').val();
         if (excDepth > 4500 && excDepth <= 6000) {
-            var vol = cL * fdnWidth * 1500 * 1e-9;
-            var vol_1 = vol;
-            var vol_2 = vol;
-            var vol_3 = cL * fdnWidth * (excDepth - 4500) * 1e-9;
+            let vol = cL * fdnWidth * 1500 * 1e-9;
+            let vol_1 = cL * fdnWidth * 1500 * 1e-9;
+            let vol_2 = cL * fdnWidth * 1500 * 1e-9;
+            let vol_3 = cL * fdnWidth * (excDepth - 4500) * 1e-9;
+            $('#one, #m_one').text(`${vol} cu.m`);
+            $('#two, #m_two').text(`${vol_1} cu.m`);
+            $('#three, #m_three').text(`${vol_2} cu.m`);
+            $('#four, #m_four').text(`${vol_3} cu.m`);
         } else if (excDepth > 3000 && excDepth <= 4500) {
-            var vol = cL * fdnWidth * 1500 * 1e-9;
-            var vol_1 = vol;
-            var vol_2 = cL * fdnWidth * (excDepth - 3000) * 1e-9;
-        } else if (excDepth > 1500 && excDepth <= 3000) {
-            var vol = cL * fdnWidth * 1500 * 1e-9;
-            var vol_1 = cL * fdnWidth * (excDepth - 1500) * 1e-9;
-        } else if (excDepth <= 1500) {
-            var vol = cL * fdnWidth * excDepth * 1e-9;
-        }
-        $('#one, #m_one').text(`${vol} cu.m`);
-        $('#two, #m_two').text(`${vol_1} cu.m`);
-        $('#three, #m_three').text(`${vol_2} cu.m`);
-        $('#four, #m_four').text(`${vol_3} cu.m`);
+            let vol = cL * fdnWidth * 1500 * 1e-9;
+            let vol_1 = cL * fdnWidth * 1500 * 1e-9;
+            let vol_2 = cL * fdnWidth * (excDepth - 3000) * 1e-9;
+            $('#one, #m_one').text(`${vol} cu.m`);
+            $('#two, #m_two').text(`${vol_1} cu.m`);
+            $('#three, #m_three').text(`${vol_2} cu.m`);
 
+            $('#Four, #m_Four').hide();
+        } else if (excDepth > 1500 && excDepth <= 3000) {
+            let vol = cL * fdnWidth * 1500 * 1e-9;
+            let vol_1 = cL * fdnWidth * (excDepth - 1500) * 1e-9;
+            $('#one, #m_one').text(`${vol} cu.m`);
+            $('#two, #m_two').text(`${vol_1} cu.m`);
+
+            $('#Three, #m_Three, #Four, #m_Four').hide();
+        } else if (excDepth <= 1500) {
+            let vol = cL * fdnWidth * excDepth * 1e-9;
+            $('#one, #m_one').text(`${vol} cu.m`);
+
+            $('#Two, #m_Two, #Three, #m_Three, #Four, #m_Four').hide();
+        }
+        // $('#one, #m_one').text(`${vol} cu.m`);
+        // $('#two, #m_two').text(`${vol_1} cu.m`);
+        // $('#three, #m_three').text(`${vol_2} cu.m`);
+        // $('#four, #m_four').text(`${vol_3} cu.m`);
+
+        // Site Clearance
         let fdnSpread = $('#fdnSpread').val();
         let siteClearance = (+length + (2*fdnSpread)) * (+width + (2*fdnSpread)) * 1e-6; 
         $('#side-bar-site-clearance, #m_side-bar-site-clearance').text(`${siteClearance} sq.m`);
@@ -163,29 +181,6 @@ $(document).ready(function(){
 
             
     });
-    
-
-    // $('#dRemove').click(function(){
-    //     if (dCounter==1) {
-    //         alert('Cannot remove first input field!')
-    //     } else {
-    //         //let list = document.getElementById('dynamicInput_1');
-    //         let list = $('#dynamicInput_1');
-    //         list.removeChild(list.lastElementChild);
-    //         dCounter--;
-    //     }
-    // });
-
-    // $('#wRemove').click(function(){
-    //     if (wCounter==1) {
-    //         alert('Cannot remove first input field!')
-    //     } else {
-    //         //let list = document.getElementById('dynamicInput_2');
-    //         let list = $('#dynamicInput_2');
-    //         list.removeChild(list.lastElementChild);
-    //         wCounter--;
-    //     }
-    // });
 
     $('.sidenav').sidenav();
 

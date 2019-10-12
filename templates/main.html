@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 {% block title %} Main {% endblock title %}
-{% block content %}
+{% block content %}      
 
-        
-
-        <!-- Modal Structure -->
+        <!-- Modal Structure (Mobile) -->
         <div id="modal1" class="modal modal-fixed-footer">
           <div class="modal-content">
             <h4 id="m_animation">Results</h4>
@@ -25,19 +23,19 @@
                         <td>Site Clearance</td>
                         <td id="m_side-bar-site-clearance"></td>
                     </tr>
-                    <tr id="m_row_one">
+                    <tr id="m_One">
                         <td>Excavations n.e 1.5m deep</td>
                         <td id="m_one"></td>
                     </tr>
-                    <tr id="m_row_two">
+                    <tr id="m_Two">
                         <td>Excavations ex. 1.5 but n.e 3.0m deep</td>
                         <td id="m_two"></td>
                     </tr>
-                    <tr id="m_row_two">
+                    <tr id="m_Three">
                         <td>Excavations ex. 3.0 but n.e 4.5m deep</td>
                         <td id="m_three"></td>
                     </tr>
-                    <tr id="m_row_four">
+                    <tr id="m_Four">
                         <td>Excavations ex. 4.5 but n.e 6.0m deep</td>
                         <td id="m_four"></td>
                     </tr>
@@ -197,7 +195,8 @@
         
             <!--Side bar (displays the results)-->
             <div class="one side-bar hide-on-med-and-down">
-                <button id="update" class="btn waves-effect waves-light green lighten-1 one"> Update
+                <button id="update" class="btn waves-effect waves-light green lighten-1 one"> 
+                    Update
                     <i class="material-icons left">replay</i>
                 </button> <br>
                 <div class="one">
@@ -221,19 +220,19 @@
                                 <td>Site Clearance</td>
                                 <td id="side-bar-site-clearance"></td>
                             </tr>
-                            <tr>
+                            <tr id="One">
                                 <td>Excavations n.e 1.5m deep</td>
                                 <td id="one"></td>
                             </tr>
-                            <tr>
+                            <tr id="Two">
                                 <td>Excavations ex. 1.5 but n.e 3.0m deep</td>
                                 <td id="two"></td>
                             </tr>
-                            <tr>
+                            <tr id="Three">
                                 <td>Excavations ex. 3.0 but n.e 4.5m deep</td>
                                 <td id="three"></td>
                             </tr>
-                            <tr>
+                            <tr id="Four">
                                 <td>Excavations ex. 4.5 but n.e 6.0m deep</td>
                                 <td id="four"></td>
                             </tr>
@@ -265,3 +264,7 @@
 
 
         {% endblock content %}
+
+
+{% block javascript %}
+{% endblock javascript %}
