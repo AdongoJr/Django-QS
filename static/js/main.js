@@ -21,7 +21,7 @@ function addDoorInput(divName) {
     }
 };
 
-function removeDoorInput(divName) {
+function removeDoorInput() {
     if (dCounter==1) {
         alert('Cannot remove first input field!')
     } else {
@@ -53,7 +53,7 @@ function addWinInput(divName) {
     }
 };
 
-function removeWinInput(divName) {
+function removeWinInput() {
     if (wCounter==1) {
         alert('Cannot remove first input field!')
     } else {
